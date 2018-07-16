@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "FallDetector.h"
 
 int main(int argc, char *argv[]) {
@@ -13,11 +14,11 @@ int main(int argc, char *argv[]) {
     size_t len;
     int length;
     
-    float t;
-    float x, y, z;
+    double t;
+    double x, y, z;
     
     int line_num = 0;
-    char fall_detected;
+    bool fall_detected;
     int falls_detected;
     
     f = fopen(argv[1], "r");
@@ -27,8 +28,8 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
-    while (fscanf(f, "%f, %f, %f, %f", &t, &x, &y, &z) != EOF) {
-        //printf("%f, %f, %f\n", x, y, z);
+    while (fscanf(f, "%lf, %lf, %lf, %lf", &t, &x, &y, &z) != EOF) {
+        //printf("%lf, %lf, %lf\n", x, y, z);
         line_num++;
         
         fall_detected = run_fall_detector(x, y, z);
